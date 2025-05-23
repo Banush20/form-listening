@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>End of Course Test Pre-Inter</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 0; }
+        .container { max-width: 700px; margin: auto; }
+        h2 { color: #333; }
+        .question { margin-bottom: 20px; }
+        .result { font-weight: bold; color: green; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>End of Course Test – Listening</h2>
+        <label for="name">Enter your name:</label><br>
+        <input type="text" id="name" placeholder="Your name"><br><br>
+
+        <audio controls>
+            <source src="audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <form id="quizForm">
+            <div class="question">
+                <p>1. The book group is on at the wrong time for Tom.</p>
+                <label><input type="radio" name="q1" value="True"> True</label>
+                <label><input type="radio" name="q1" value="False"> False</label>
+            </div>
+            <div class="question">
+                <p>2. Tom has just bought a new camera.</p>
+                <label><input type="radio" name="q2" value="True"> True</label>
+                <label><input type="radio" name="q2" value="False"> False</label>
+            </div>
+            <div class="question">
+                <p>3. Tom’s course is all done on a computer.</p>
+                <label><input type="radio" name="q3" value="True"> True</label>
+                <label><input type="radio" name="q3" value="False"> False</label>
+            </div>
+            <div class="question">
+                <p>4. The college is near a cinema.</p>
+                <label><input type="radio" name="q4" value="True"> True</label>
+                <label><input type="radio" name="q4" value="False"> False</label>
+            </div>
+            <div class="question">
+                <p>5. Sally wants to study on the same evening as Tom.</p>
+                <label><input type="radio" name="q5" value="True"> True</label>
+                <label><input type="radio" name="q5" value="False"> False</label>
+            </div>
+
+            <button type="button" onclick="checkAnswers()">Check Answers</button>
+        </form>
+
+        <p id="score" class="result"></p>
+    </div>
+
+    <script>
+        const correctAnswers = ["False", "False", "True", "True", "False"];
+        function checkAnswers() {
+            let score = 0;
+            for (let i = 1; i <= 5; i++) {
+                let radios = document.getElementsByName("q" + i);
+                for (let radio of radios) {
+                    if (radio.checked && radio.value === correctAnswers[i - 1]) {
+                        score++;
+                    }
+                }
+            }
+            document.getElementById("score").innerText = "Your score: " + score + " out of 5";
+        }
+    </script>
+</body>
+</html>
